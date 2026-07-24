@@ -930,11 +930,11 @@ export default function PsicologaSite() {
                 </li>
                 <li>
                   <Mail size={16} />
-                  <a href="mailto:contato@helenaduarte.com.br">contato@helenaduarte.com.br</a>
+                  <a href="mailto:contato@vanessacampos.com.br">contato@vanessacampos.com.br</a>
                 </li>
                 <li>
                   <Instagram size={16} />
-                  <a href="#" target="_blank" rel="noopener noreferrer">@helenaduarte.psi</a>
+                  <a href="#" target="_blank" rel="noopener noreferrer">@psicologa_vanessacampos</a>
                 </li>
               </ul>
             </div>
