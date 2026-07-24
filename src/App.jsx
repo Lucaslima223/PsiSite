@@ -197,23 +197,6 @@ export default function PsicologaSite() {
   const [menuAberto, setMenuAberto] = useState(false);
   const [faqAberta, setFaqAberta] = useState(0);
 
-  useEffect(() => {
-    if (typeof document === 'undefined') return;
-
-    const existingLink = document.querySelector("link[rel='icon']");
-    if (existingLink) {
-      existingLink.setAttribute('href', '/favicon.ico');
-      existingLink.setAttribute('type', 'image/x-icon');
-      return;
-    }
-
-    const link = document.createElement('link');
-    link.rel = 'icon';
-    link.href = '/favicon.ico';
-    link.type = 'image/x-icon';
-    document.head.appendChild(link);
-  }, []);
-
   const navLinks = [
     { href: '#sobre', label: 'Sobre' },
     { href: '#ajuda', label: 'Como posso ajudar' },
