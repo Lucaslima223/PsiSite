@@ -763,10 +763,9 @@ export default function PsicologaSite() {
               Psicologia com escuta, ética e presença.
             </h2>
             <p style={{ fontSize: '1rem' }}>
-              Acredito que a terapia é, antes de tudo, um encontro: um espaço onde você pode
-              falar sem medo de ser julgado(a) e ser ouvido(a) com atenção genuína. Trabalho
-              com uma abordagem humanista, com influências da Terapia Cognitivo-Comportamental,
-              sempre respeitando o tempo e a história de cada pessoa.
+              Sou psicóloga, especialista em Terapia Cognitivo-Comportamental ( TCC).<br></br>Ao longo da minha trajetória, encontrei na Terapia de Aceitação e Compromisso (ACT) uma forma de ampliar meu olhar sobre o sofrimento humano e fortalecer uma prática clínica mais sensível, presente e comprometida com aquilo que realmente importa para cada pessoa.
+              <br></br>Acredito que a terapia é um espaço de encontro, acolhimento e transformação. Não se trata de eliminar o sofrimento, buscar a perfeição ou encontrar respostas prontas para tudo. Trata-se de desenvolver recursos para lidar de maneira mais consciente, flexível e compassiva com as dores, as incertezas e os desafios que fazem parte da vida.
+              <br></br>Se você busca um espaço seguro para compreender melhor suas emoções, fortalecer sua autonomia e construir uma vida mais significativa, será um prazer caminhar ao seu lado nessa jornada.
             </p>
             <ul className="credencial-list">
               {credenciais.map((c) => <li key={c}>{c}</li>)}
