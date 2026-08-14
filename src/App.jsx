@@ -710,12 +710,10 @@ export default function PsicologaSite() {
       <section className="hero" id="topo">
         <div className="wrap hero-grid">
           <Reveal>
-            <span className="eyebrow">Psicoterapia individual · Presencial e online</span>
-            <h1>Um espaço só seu para se escutar com cuidado.</h1>
+            <span className="eyebrow">Consulta Psicológica Particular | Atendimento para Ansiendade, Depressão, Transtornos</span>
+            <h1>Construa uma vida com propósito através da terapia online.</h1>
             <p className="hero-sub">
-              Sou {NOME}, psicóloga clínica, e ofereço acompanhamento acolhedor para quem
-              busca entender melhor os próprios sentimentos, escolhas e histórias — no seu
-              tempo, sem pressa.
+              Um ambiente acolhedor, confidencial e sem julgamentos. Porque florescemos quando encontramos um lugar seguro para existir.
             </p>
             <div className="hero-ctas">
               <a
@@ -724,7 +722,7 @@ export default function PsicologaSite() {
                 rel="noopener noreferrer"
                 className="btn btn-whatsapp"
               >
-                <MessageCircle size={19} /> Conversar no WhatsApp
+                <MessageCircle size={19} /> Fale comigo hoje
               </a>
               <a href="#ajuda" className="btn btn-outline">
                 Ver como posso ajudar <ArrowRight size={17} />
