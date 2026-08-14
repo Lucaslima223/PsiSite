@@ -11,7 +11,7 @@ import fotoPerfil from './images/DSC00038.png';
 ------------------------------------------------------------------- */
 const NOME = 'Vanessa de Campos Francisco';
 const CRP = 'CRP 06/43399';
-const WHATSAPP_NUMBER = '5511999999999'; // formato: 55 + DDD + número, sem espaços/símbolos
+const WHATSAPP_NUMBER = '5511987136847'; // formato: 55 + DDD + número, sem espaços/símbolos
 
 function waLink(mensagem) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
@@ -670,7 +670,7 @@ export default function PsicologaSite() {
           </nav>
 
           <a
-            href={waLink(`Olá, ${NOME}! Gostaria de agendar uma conversa inicial.`)}
+            href={waLink(`Olá! Gostaria de agendar uma conversa inicial.`)}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-whatsapp btn-sm header-cta"
@@ -694,7 +694,7 @@ export default function PsicologaSite() {
               <a key={l.href} href={l.href} onClick={() => setMenuAberto(false)}>{l.label}</a>
             ))}
             <a
-              href={waLink(`Olá, ${NOME}! Gostaria de agendar uma conversa inicial.`)}
+              href={waLink(`Olá! Gostaria de agendar uma conversa inicial.`)}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-whatsapp"
@@ -908,7 +908,7 @@ export default function PsicologaSite() {
               terapêuticos começam.
             </p>
             <a
-              href={waLink(`Olá, ${NOME}! Gostaria de agendar minha conversa inicial.`)}
+              href={waLink(`Olá! Gostaria de agendar minha conversa inicial.`)}
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-cream"
