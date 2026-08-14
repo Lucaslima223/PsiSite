@@ -763,9 +763,9 @@ export default function PsicologaSite() {
               Psicologia com escuta, ética e presença.
             </h2>
             <p style={{ fontSize: '1rem' }}>
-              Sou psicóloga, especialista em Terapia Cognitivo-Comportamental ( TCC).<br></br>Ao longo da minha trajetória, encontrei na Terapia de Aceitação e Compromisso (ACT) uma forma de ampliar meu olhar sobre o sofrimento humano e fortalecer uma prática clínica mais sensível, presente e comprometida com aquilo que realmente importa para cada pessoa.
-              <br></br>Acredito que a terapia é um espaço de encontro, acolhimento e transformação. Não se trata de eliminar o sofrimento, buscar a perfeição ou encontrar respostas prontas para tudo. Trata-se de desenvolver recursos para lidar de maneira mais consciente, flexível e compassiva com as dores, as incertezas e os desafios que fazem parte da vida.
-              <br></br>Se você busca um espaço seguro para compreender melhor suas emoções, fortalecer sua autonomia e construir uma vida mais significativa, será um prazer caminhar ao seu lado nessa jornada.
+              Sou psicóloga, especialista em Terapia Cognitivo-Comportamental ( TCC).<br></br><br></br>Ao longo da minha trajetória, encontrei na Terapia de Aceitação e Compromisso (ACT) uma forma de ampliar meu olhar sobre o sofrimento humano e fortalecer uma prática clínica mais sensível, presente e comprometida com aquilo que realmente importa para cada pessoa.
+              <br></br><br></br>Acredito que a terapia é um espaço de encontro, acolhimento e transformação. Não se trata de eliminar o sofrimento, buscar a perfeição ou encontrar respostas prontas para tudo. Trata-se de desenvolver recursos para lidar de maneira mais consciente, flexível e compassiva com as dores, as incertezas e os desafios que fazem parte da vida.
+              <br></br><br></br>Se você busca um espaço seguro para compreender melhor suas emoções, fortalecer sua autonomia e construir uma vida mais significativa, será um prazer caminhar ao seu lado nessa jornada.
             </p>
 
             <div className="crp-card">
