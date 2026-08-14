@@ -4,7 +4,7 @@ import {
   Instagram, ShieldCheck, Heart, Users, Brain, CloudRain, Sparkles,
   Sun, Leaf, ArrowRight, Image as ImageIcon
 } from 'lucide-react';
-import fotoPerfil from './images/DSC00038.webp';
+import fotoPerfil from './images/DSC00038.png';
 
 /* ------------------------------------------------------------------
    CONFIGURAÇÃO — troque pelos dados reais antes de publicar
