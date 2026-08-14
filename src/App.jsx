@@ -5,6 +5,7 @@ import {
   Sun, Leaf, ArrowRight, Image as ImageIcon
 } from 'lucide-react';
 import fotoPerfil from './images/DSC00038.png';
+import fotoaboutme from './images/aboutme.jpeg';
 
 /* ------------------------------------------------------------------
    CONFIGURAÇÃO — troque pelos dados reais antes de publicar
@@ -755,7 +756,12 @@ export default function PsicologaSite() {
       <section className="section section-alt" id="sobre">
         <div className="wrap sobre-grid">
           <Reveal>
-            <ImagePlaceholder label="Foto no consultório ou em atendimento" ratio="4 / 5" shape="arch" />
+            <img
+              src={fotoaboutme}
+              alt="Consultório ou atendimento terapêutico"
+              className="hero-photo"
+              loading="lazy"
+            />
           </Reveal>
           <Reveal delay={120}>
             <span className="eyebrow">Sobre mim</span>
