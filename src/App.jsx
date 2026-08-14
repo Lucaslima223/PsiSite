@@ -767,9 +767,6 @@ export default function PsicologaSite() {
               <br></br>Acredito que a terapia é um espaço de encontro, acolhimento e transformação. Não se trata de eliminar o sofrimento, buscar a perfeição ou encontrar respostas prontas para tudo. Trata-se de desenvolver recursos para lidar de maneira mais consciente, flexível e compassiva com as dores, as incertezas e os desafios que fazem parte da vida.
               <br></br>Se você busca um espaço seguro para compreender melhor suas emoções, fortalecer sua autonomia e construir uma vida mais significativa, será um prazer caminhar ao seu lado nessa jornada.
             </p>
-            <ul className="credencial-list">
-              {credenciais.map((c) => <li key={c}>{c}</li>)}
-            </ul>
 
             <div className="crp-card">
               <ShieldCheck size={32} />
