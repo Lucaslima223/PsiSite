@@ -4,6 +4,7 @@ import {
   Instagram, ShieldCheck, Heart, Users, Brain, CloudRain, Sparkles,
   Sun, Leaf, ArrowRight, Image as ImageIcon
 } from 'lucide-react';
+import fotoPerfil from './images/DSC00038.webp';
 
 /* ------------------------------------------------------------------
    CONFIGURAÇÃO — troque pelos dados reais antes de publicar
@@ -301,21 +302,21 @@ export default function PsicologaSite() {
           transition: transform .2s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
           white-space: nowrap;
         }
-        .btn-whatsapp {
+        .psi-site .btn-whatsapp {
           background: var(--whatsapp);
           color: #fff;
           box-shadow: 0 10px 24px rgba(37,211,102,0.32);
         }
         .btn-whatsapp:hover { background: var(--whatsapp-deep); transform: translateY(-2px); }
-        .btn-outline {
+        .psi-site .btn-outline {
           background: transparent;
           border: 1.5px solid var(--ink);
           color: var(--ink);
         }
         .btn-outline:hover { background: var(--ink); color: var(--paper); }
-        .btn-cream {
+        .psi-site .btn-cream {
           background: var(--cream-on-dusk);
-          color: var(--dusk-2);
+          color: var(--forest-deep);
         }
         .btn-cream:hover { background: #fff; transform: translateY(-2px); }
         .btn-sm { padding: 0.7rem 1.3rem; font-size: 0.85rem; }
@@ -396,6 +397,16 @@ export default function PsicologaSite() {
           grid-template-columns: 1fr;
           gap: 2.8rem;
           align-items: center;
+        }
+
+        .hero-photo {
+          position: relative;
+          z-index: 1;
+          width: 100%;
+          aspect-ratio: 4 / 5;
+          object-fit: cover;
+          border-radius: 42% 42% 14px 14px;
+          display: block;
         }
         @media (min-width: 900px) {
           .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; }
@@ -728,13 +739,13 @@ export default function PsicologaSite() {
           <Reveal delay={120}>
             <div className="hero-visual">
               <div className="hero-blob" />
-              <ImagePlaceholder
-                label="Foto profissional — retrato (proporção 4:5)"
-                ratio="4 / 5"
-                shape="arch"
-              />
+                <img
+                    src={fotoPerfil}
+                    alt={`Foto profissional de ${NOME}`}
+                    className="hero-photo"
+                />
               <Selo size="lg" />
-            </div>
+              </div>
           </Reveal>
         </div>
       </section>
