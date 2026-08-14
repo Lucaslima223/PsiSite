@@ -10,7 +10,7 @@ import fotoPerfil from './images/DSC00038.png';
    CONFIGURAÇÃO — troque pelos dados reais antes de publicar
 ------------------------------------------------------------------- */
 const NOME = 'Vanessa de Campos Francisco';
-const CRP = 'CRP 06/123456';
+const CRP = 'CRP 06/43399';
 const WHATSAPP_NUMBER = '5511999999999'; // formato: 55 + DDD + número, sem espaços/símbolos
 
 function waLink(mensagem) {
@@ -61,7 +61,7 @@ function Selo({ size = 'md' }) {
   return (
     <div className={`selo selo-${size}`} role="img" aria-label={`Selo de registro profissional, ${CRP}`}>
       <div className="selo-ring">
-        <Leaf size={size === 'lg' ? 22 : 13} strokeWidth={1.6} className="selo-leaf" />
+        <Leaf size={size === 'lg' ? 20 : 13} strokeWidth={1.6} className="selo-leaf" />
         <span className="selo-label">CRP</span>
         <span className="selo-num">{CRP.replace('CRP ', '')}</span>
       </div>
@@ -335,11 +335,12 @@ export default function PsicologaSite() {
           align-items: center;
           justify-content: space-between;
           padding: 0.9rem 0;
+          gap: 1rem;
         }
         .brand { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
         .brand-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.15rem; line-height: 1.1; }
         .brand-tag { font-size: 0.72rem; color: var(--forest); font-weight: 600; letter-spacing: 0.04em; }
-        .nav-desktop { display: none; align-items: center; gap: 2rem; }
+        .nav-desktop { display: none; align-items: center; gap: 2rem; margin-left: 1rem; margin-right: 1rem; }
         @media (min-width: 900px) { .nav-desktop { display: flex; } }
         .nav-link {
           text-decoration: none;
@@ -348,6 +349,8 @@ export default function PsicologaSite() {
           color: var(--ink);
           position: relative;
           padding-bottom: 3px;
+          text-align: center;
+          white-space: nowrap;
         }
         .nav-link::after {
           content: '';
