@@ -13,6 +13,7 @@ const NOME = 'Vanessa de Campos Francisco';
 const CRP = 'CRP 06/43399';
 const WHATSAPP_NUMBER = '5511987136847'; // formato: 55 + DDD + número, sem espaços/símbolos
 const HERO_VIDEO = '/videos/hero.mp4'; // arquivo em public/videos/ — sem ele, o hero usa um fundo animado
+const VIDEO_FADE = 2; // segundos de transição entre o fim e o recomeço do vídeo
 
 function waLink(mensagem) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
@@ -234,7 +235,10 @@ export default function PsicologaSite() {
   const [loaderVisivel, setLoaderVisivel] = useState(true);
   const [videoPronto, setVideoPronto] = useState(false);
   const [foraDoHero, setForaDoHero] = useState(false);
+  const [videoAtivo, setVideoAtivo] = useState(0);
+  const [videoSaindo, setVideoSaindo] = useState(null);
   const videoRef = useRef(null);
+  const video2Ref = useRef(null);
   const heroRef = useRef(null);
   const headerRef = useRef(null);
 
@@ -276,6 +280,44 @@ export default function PsicologaSite() {
     }
     const t = setTimeout(() => setLoaderVisivel(false), 1500);
     return () => clearTimeout(t);
+  }, [carregado]);
+
+  // Loop sem corte: perto do fim, a outra cópia recomeça por cima e aparece aos poucos
+  useEffect(() => {
+    if (!carregado || reduzMovimento()) return;
+    const videos = [videoRef.current, video2Ref.current];
+    if (videos.some((v) => !v)) return;
+    let ativo = 0;
+    let trocando = false;
+    let timer;
+
+    const aoAvancar = (i) => () => {
+      const atual = videos[i];
+      if (i !== ativo || trocando || !atual.duration) return;
+      if (atual.currentTime < atual.duration - VIDEO_FADE - 0.3) return;
+      trocando = true;
+      const proximo = videos[1 - i];
+      proximo.currentTime = 0;
+      proximo.play().catch(() => {});
+      ativo = 1 - i;
+      setVideoSaindo(i);
+      setVideoAtivo(ativo);
+      timer = setTimeout(() => {
+        atual.pause();
+        setVideoSaindo(null);
+        trocando = false;
+      }, VIDEO_FADE * 1000 + 300);
+    };
+
+    const ouvintes = videos.map((v, i) => {
+      const fn = aoAvancar(i);
+      v.addEventListener('timeupdate', fn);
+      return fn;
+    });
+    return () => {
+      clearTimeout(timer);
+      videos.forEach((v, i) => v.removeEventListener('timeupdate', ouvintes[i]));
+    };
   }, [carregado]);
 
   // A nav fica transparente enquanto estiver sobre o hero
@@ -477,7 +519,7 @@ export default function PsicologaSite() {
           align-items: center;
           justify-content: space-between;
           padding-top: 1.1rem;
-          padding-bottom: 1.1rem;
+          padding-bottom: 1.6rem;
           gap: 1.5rem;
         }
         @media (min-width: 1080px) {
@@ -488,9 +530,14 @@ export default function PsicologaSite() {
           }
           .header-cta { justify-self: end; }
         }
-        .brand { display: flex; flex-direction: column; gap: 0.2rem; text-decoration: none; }
-        .brand-name { font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1.15rem; line-height: 1.1; }
-        .brand-tag { font-size: 0.72rem; color: var(--forest); font-weight: 600; letter-spacing: 0.04em; }
+        /* o nome alinha com o menu; a tag fica pendurada logo abaixo, fora do alinhamento */
+        .brand { position: relative; display: block; text-decoration: none; }
+        .brand-name { display: block; font-family: 'Playfair Display', serif; font-weight: 600; font-size: 1rem; line-height: 1.2; }
+        .brand-tag {
+          position: absolute; left: 0; top: calc(100% + 0.2rem);
+          white-space: nowrap;
+          font-size: 0.66rem; color: var(--forest); font-weight: 600; letter-spacing: 0.04em;
+        }
         .nav-desktop { display: none; align-items: center; justify-content: center; gap: 1.75rem; }
         @media (min-width: 1080px) { .nav-desktop { display: flex; } }
         .nav-link {
@@ -609,9 +656,11 @@ export default function PsicologaSite() {
           width: 100%; height: 100%;
           object-fit: cover;
           opacity: 0;
-          transition: opacity 1.5s ease;
+          z-index: 1;
         }
-        .hero-video--pronto { opacity: 1; }
+        /* a cópia que entra aparece por cima; a que sai continua visível por baixo até sumir */
+        .hero-video--ativo { opacity: 1; z-index: 2; transition: opacity 2s ease-in-out; }
+        .hero-video--saindo { opacity: 1; z-index: 1; }
         .hero-fallback {
           position: absolute; inset: -10%;
           background:
@@ -730,6 +779,7 @@ export default function PsicologaSite() {
         @media (max-height: 640px) { .hero-scroll { display: none; } }
         @media (max-width: 640px) {
           .hero { padding: 6.5rem 0 3rem; }
+          .hero .eyebrow { display: none; }
           .hero-sub { font-size: 1rem; margin-bottom: 1.8rem; }
           .hero-trust { margin-top: 1.6rem; }
           .hero-scroll { display: none; }
@@ -1041,18 +1091,21 @@ export default function PsicologaSite() {
         <div className="hero-fundo" aria-hidden="true">
           <div className="hero-midia">
             <div className="hero-fallback" />
-            <video
-              ref={videoRef}
-              className={`hero-video ${videoPronto ? 'hero-video--pronto' : ''}`}
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              onPlaying={() => setVideoPronto(true)}
-            >
-              <source src={HERO_VIDEO} type="video/mp4" />
-            </video>
+            {[videoRef, video2Ref].map((ref, i) => (
+              <video
+                key={i}
+                ref={ref}
+                className={`hero-video ${videoPronto && videoAtivo === i ? 'hero-video--ativo' : ''} ${videoSaindo === i ? 'hero-video--saindo' : ''}`}
+                autoPlay={i === 0}
+                muted
+                loop={reduzMovimento()}
+                playsInline
+                preload="auto"
+                onPlaying={i === 0 ? () => setVideoPronto(true) : undefined}
+              >
+                <source src={HERO_VIDEO} type="video/mp4" />
+              </video>
+            ))}
           </div>
           <div className="hero-veu" />
         </div>
