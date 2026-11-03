@@ -186,7 +186,7 @@ const etapas = [
   {
     n: '02',
     title: 'Sessão de acolhimento',
-    desc: 'Nos conhecemos com calma: você compartilha sua história e alinhamos juntas como o processo vai funcionar.'
+    desc: 'Nos conhecemos com calma: você compartilha sua história e alinhamos juntos como o processo vai funcionar.'
   },
   {
     n: '03',
