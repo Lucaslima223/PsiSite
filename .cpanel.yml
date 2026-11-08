@@ -1,0 +1,7 @@
+---
+# Usado pelo cPanel > Git Version Control (branch "deploy").
+# Copia o site gerado para public_html.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home1/vane6558/public_html/
+    - /bin/cp -R * $DEPLOYPATH
