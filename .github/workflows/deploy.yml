@@ -1,12 +1,18 @@
-name: Deploy HostGator
+name: Build para HostGator
+
+# Gera o site (npm run build) e publica o resultado na branch "deploy".
+# O cPanel (Git Version Control) puxa a branch "deploy" e copia para public_html.
 
 on:
   push:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -19,12 +25,13 @@ jobs:
       - run: npm ci
       - run: npm run build
 
-      - name: Upload para public_html
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Incluir .cpanel.yml no build
+        run: cp .cpanel.yml dist/
+
+      - name: Publicar dist na branch deploy
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          server: br1140.hostgator.com.br
-          username: vane6558
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          local-dir: ./dist/
-          server-dir: public_html/
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: deploy
+          publish_dir: ./dist
+          force_orphan: true
