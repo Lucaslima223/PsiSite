@@ -1327,16 +1327,16 @@ export default function PsicologaSite() {
                 <li>
                   <Phone size={16} />
                   <a href={waLink(`Olá, ${NOME}!`)} target="_blank" rel="noopener noreferrer">
-                    (11) 99999-9999 · WhatsApp
+                    (11) 98713-6847 · WhatsApp
                   </a>
                 </li>
                 <li>
                   <Mail size={16} />
-                  <a href="mailto:contato@vanessacampos.com.br">contato@vanessacampos.com.br</a>
+                  <a href="mailto:contato@vanessacampos.com.br">vanessadecamposf@outlook.com</a>
                 </li>
                 <li>
                   <Instagram size={16} />
-                  <a href="#" target="_blank" rel="noopener noreferrer">@psicologa_vanessacampos</a>
+                  <a href="https://www.instagram.com/psicologa_vanessacampos/" target="_blank" rel="noopener noreferrer">@psicologa_vanessacampos</a>
                 </li>
               </ul>
             </div>
