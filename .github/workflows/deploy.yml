@@ -2,6 +2,8 @@ name: Build para HostGator
 
 # Gera o site (npm run build) e publica o resultado na branch "deploy".
 # O cPanel (Git Version Control) puxa a branch "deploy" e copia para public_html.
+# Sem force_orphan: cada build entra como commit novo em cima do anterior,
+# para o "Update from Remote" do cPanel conseguir fazer fast-forward.
 
 on:
   push:
@@ -34,4 +36,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: deploy
           publish_dir: ./dist
-          force_orphan: true
